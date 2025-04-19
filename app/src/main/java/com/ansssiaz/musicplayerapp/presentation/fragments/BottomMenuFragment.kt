@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ansssiaz.musicplayerapp.R
 import com.ansssiaz.musicplayerapp.databinding.FragmentBottomMenuBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BottomMenuFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

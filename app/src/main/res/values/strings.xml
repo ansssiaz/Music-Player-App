@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MusicPlayerApp</string>
+    <string name="app_name" translatable="false">MusicPlayerApp</string>
+    <string name="search_query_hint">Search</string>
+    <string name="network_error">Network error</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="snackbar_action">Repeat</string>
+    <string name="track_image">Track image</string>
 </resources>
