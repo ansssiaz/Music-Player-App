@@ -17,6 +17,7 @@ data class Tracks(
 @Serializable
 data class Track(
     val id: Long,
+    val readable: Boolean? = null,
     val title: String,
     @SerialName("title_short")
     val titleShort: String,
@@ -34,7 +35,7 @@ data class Track(
     val preview: String,
     @SerialName("md5_image")
     val md5Image: String,
-    val position: Int,
+    val position: Int? = null,
     val artist: Artist,
     val album: Album,
     val type: String

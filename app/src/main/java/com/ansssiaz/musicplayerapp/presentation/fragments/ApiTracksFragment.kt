@@ -49,6 +49,25 @@ class ApiTracksFragment : Fragment() {
 
         binding.search.setQueryHint(getString(R.string.search_query_hint))
 
+        binding.search.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    viewModel.searchTracks(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    viewModel.getTracks()
+                } else {
+                    viewModel.searchTracks(newText)
+                }
+                return true
+            }
+        })
+
         viewModel.getTracks()
 
         viewModel.state

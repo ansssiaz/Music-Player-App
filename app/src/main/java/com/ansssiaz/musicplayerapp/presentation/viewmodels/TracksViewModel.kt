@@ -33,4 +33,18 @@ class TracksViewModel @Inject constructor(
             }
         }
     }
+
+    fun searchTracks(query: String) {
+        _state.update { it.copy(status = Status.Loading) }
+        viewModelScope.launch {
+            try {
+                val tracks = repository.searchTrack(query).map { it.toUiModel() }
+                _state.update { it.copy(tracks = tracks, status = Status.Idle) }
+            } catch (e: Exception) {
+                _state.update {
+                    it.copy(status = Status.Error(e))
+                }
+            }
+        }
+    }
 }

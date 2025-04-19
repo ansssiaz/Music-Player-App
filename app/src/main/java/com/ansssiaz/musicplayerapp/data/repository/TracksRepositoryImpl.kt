@@ -10,6 +10,6 @@ class TracksRepositoryImpl @Inject constructor(private val api: TracksApi) : Tra
 
     override suspend fun searchTrack(query: String): List<Track> {
         val formattedQuery = query.replace(" ", "+")
-        return api.search(formattedQuery).tracks.data
+        return api.search(formattedQuery).data
     }
 }

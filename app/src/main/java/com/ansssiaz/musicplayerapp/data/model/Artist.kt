@@ -17,7 +17,7 @@ data class Artist(
     val pictureBig: String,
     @SerialName("picture_xl")
     val pictureXl: String,
-    val radio: Boolean,
+    val radio: Boolean? = null,
     val tracklist: String,
     val type: String
 )
