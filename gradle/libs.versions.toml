@@ -23,6 +23,7 @@ arrowCore = "2.0.1"
 kotlinxCoroutinesTest = "1.10.1"
 media = "1.7.0"
 exoplayer = "2.19.1"
+daggerHilt = "2.56.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,10 +50,14 @@ desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref 
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 exoplayer = { module = "com.google.android.exoplayer:exoplayer", version.ref = "exoplayer" }
+google-dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerHilt" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHilt" }
+dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt"}
 

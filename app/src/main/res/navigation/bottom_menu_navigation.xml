@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_menu_navigation"
+    app:startDestination="@id/apiTracksFragment">
+
+    <fragment
+        android:id="@+id/apiTracksFragment"
+        android:name="com.ansssiaz.musicplayerapp.presentation.fragments.ApiTracksFragment"
+        android:label="ApiTracksFragment"
+        tools:layout="@layout/fragment_api_tracks"/>
+    <fragment
+        android:id="@+id/localTracksFragment"
+        android:name="com.ansssiaz.musicplayerapp.presentation.fragments.LocalTracksFragment"
+        tools:layout="@layout/fragment_local_tracks"
+        android:label="LocalTracksFragment" />
+</navigation>

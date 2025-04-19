@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.serialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -35,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -63,4 +67,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.exoplayer)
     implementation(libs.androidx.media)
+    implementation(libs.dagger.hilt)
+    ksp(libs.google.dagger.compiler)
+    ksp(libs.dagger.hilt.compiler)
 }
