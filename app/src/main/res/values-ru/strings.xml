@@ -5,4 +5,8 @@
     <string name="unknown_error">Неизвестная ошибка</string>
     <string name="snackbar_action">Повторить</string>
     <string name="track_image">Обложка трека</string>
+    <string name="current_track_image">Обложка текущего трека</string>
+    <string name="play_pause">Воспроизведение или приостановка трека</string>
+    <string name="skip_previous">Предыдущий трек</string>
+    <string name="skip">Следующий трек</string>
 </resources>

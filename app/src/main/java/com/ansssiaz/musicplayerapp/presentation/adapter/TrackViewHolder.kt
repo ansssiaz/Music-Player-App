@@ -22,7 +22,6 @@ class TrackViewHolder(private val binding: TracksItemBinding) : RecyclerView.Vie
             Glide.with(binding.root)
                 .load(track.imageUrl)
                 .transform(RoundedCorners(radius))
-                .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(binding.trackImage)
         }

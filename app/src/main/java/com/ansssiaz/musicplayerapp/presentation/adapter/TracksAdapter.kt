@@ -18,7 +18,7 @@ class TracksAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = TracksItemBinding.inflate(layoutInflater, parent, false)
         val viewHolder = TrackViewHolder(binding)
-        binding.root.setOnClickListener {
+        binding.trackImage.setOnClickListener {
             listener.onTrackClicked(getItem(viewHolder.getAbsoluteAdapterPosition()))
         }
         return viewHolder

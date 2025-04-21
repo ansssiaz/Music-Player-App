@@ -1,17 +1,19 @@
 package com.ansssiaz.musicplayerapp.presentation.fragments
 
-import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
+import android.widget.SearchView
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ansssiaz.musicplayerapp.R
 import com.ansssiaz.musicplayerapp.databinding.FragmentApiTracksBinding
@@ -26,7 +28,6 @@ import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class ApiTracksFragment : Fragment() {
-    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +40,36 @@ class ApiTracksFragment : Fragment() {
         val tracksAdapter = TracksAdapter(
             object : TracksAdapter.TracksListener {
                 override fun onTrackClicked(track: TrackUiModel) {
-                    //playback track fragment
+                    viewModel.getTrack(track.id)
+                    val tracksList = ArrayList<Parcelable>().apply {
+                        addAll(viewModel.state.value.tracks.map { currentTrack ->
+                            bundleOf(
+                                "id" to currentTrack.id,
+                                "title" to currentTrack.title,
+                                "preview" to currentTrack.preview,
+                                "imageUrl" to currentTrack.imageUrl,
+                                "album" to currentTrack.album,
+                                "author" to currentTrack.author
+                            )
+                        }
+                        )
+                    }
+
+                    requireParentFragment()
+                        .requireParentFragment()
+                        .findNavController()
+                        .navigate(
+                            R.id.action_bottomMenuFragment_to_trackPlaybackFragment,
+                            bundleOf(
+                                TrackPlaybackFragment.ARG_TRACK_ID to track.id,
+                                TrackPlaybackFragment.ARG_TRACK_TITLE to track.title,
+                                TrackPlaybackFragment.ARG_TRACK_PREVIEW to track.preview,
+                                TrackPlaybackFragment.ARG_TRACK_IMAGE_URL to track.imageUrl,
+                                TrackPlaybackFragment.ARG_ALBUM to track.album,
+                                TrackPlaybackFragment.ARG_AUTHOR to track.author,
+                                TrackPlaybackFragment.ARG_TRACKS_LIST to tracksList
+                            )
+                        )
                 }
             }
         )
@@ -47,10 +77,7 @@ class ApiTracksFragment : Fragment() {
         binding.listOfTracks.layoutManager = LinearLayoutManager(requireContext())
         binding.listOfTracks.adapter = tracksAdapter
 
-        binding.search.setQueryHint(getString(R.string.search_query_hint))
-
-        binding.search.setOnQueryTextListener(object :
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     viewModel.searchTracks(it)

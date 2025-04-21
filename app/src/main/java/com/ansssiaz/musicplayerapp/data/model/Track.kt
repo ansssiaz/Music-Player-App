@@ -42,13 +42,14 @@ data class Track(
 )
 
 fun Track.toUiModel(): TrackUiModel {
-    val imageUrl = "https://cdn-images.dzcdn.net/images/cover/$md5Image/250x250-000000-80-0-0.jpg"
+    val imageUrl = "https://cdn-images.dzcdn.net/images/cover/$md5Image/300x300-000000-80-0-0.jpg"
     return TrackUiModel(
         id = id,
-        link = link,
-        imageUrl = imageUrl,
         title = title,
+        imageUrl = imageUrl,
         author = artist.name,
-        isDownloaded = false
+        album = album.title,
+        albumImageUrl = album.cover,
+        preview = preview
     )
 }

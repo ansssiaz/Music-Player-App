@@ -9,7 +9,8 @@
         android:id="@+id/apiTracksFragment"
         android:name="com.ansssiaz.musicplayerapp.presentation.fragments.ApiTracksFragment"
         android:label="ApiTracksFragment"
-        tools:layout="@layout/fragment_api_tracks"/>
+        tools:layout="@layout/fragment_api_tracks">
+    </fragment>
     <fragment
         android:id="@+id/localTracksFragment"
         android:name="com.ansssiaz.musicplayerapp.presentation.fragments.LocalTracksFragment"
