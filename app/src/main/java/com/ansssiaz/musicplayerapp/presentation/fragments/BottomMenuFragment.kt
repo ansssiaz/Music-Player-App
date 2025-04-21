@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ansssiaz.musicplayerapp.R
 import com.ansssiaz.musicplayerapp.databinding.FragmentBottomMenuBinding
@@ -20,8 +20,9 @@ class BottomMenuFragment : Fragment() {
     ): View {
         val binding = FragmentBottomMenuBinding.inflate(inflater, container, false)
 
-        val navController =
-            requireNotNull(childFragmentManager.findFragmentById(R.id.container)).findNavController()
+        val navHostFragment = childFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        val navController = navHostFragment.navController
+
         binding.bottomMenu.setupWithNavController(navController)
         return binding.root
     }

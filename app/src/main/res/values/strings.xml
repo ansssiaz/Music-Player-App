@@ -5,4 +5,8 @@
     <string name="unknown_error">Unknown error</string>
     <string name="snackbar_action">Repeat</string>
     <string name="track_image">Track image</string>
+    <string name="current_track_image">Current track image</string>
+    <string name="play_pause">Play or pause track</string>
+    <string name="skip_previous">Skip previous track</string>
+    <string name="skip">Skip</string>
 </resources>

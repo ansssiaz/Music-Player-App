@@ -1,6 +1,7 @@
 package com.ansssiaz.musicplayerapp.data.repository
 
 import com.ansssiaz.musicplayerapp.data.api.TracksApi
+import com.ansssiaz.musicplayerapp.data.model.CurrentTrack
 import com.ansssiaz.musicplayerapp.data.model.Track
 import com.ansssiaz.musicplayerapp.domain.repository.TracksRepository
 import javax.inject.Inject
@@ -12,4 +13,6 @@ class TracksRepositoryImpl @Inject constructor(private val api: TracksApi) : Tra
         val formattedQuery = query.replace(" ", "+")
         return api.search(formattedQuery).data
     }
+
+    override suspend fun getTrack(id: Long): CurrentTrack = api.getTrack(id)
 }
